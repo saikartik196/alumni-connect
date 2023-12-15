@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688249893780",
+    "project_id": "alumni-connect-adbb1",
+    "storage_bucket": "alumni-connect-adbb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688249893780:android:b2792d603d6782d0439581",
+        "android_client_info": {
+          "package_name": "com.example.alumni_connect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688249893780-qtgjri7d73gi3gqnha7q253js9ae4bgv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgV6EdKRRgvdLR8TJp2fFpJ5TVcFMxAWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688249893780-qtgjri7d73gi3gqnha7q253js9ae4bgv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
