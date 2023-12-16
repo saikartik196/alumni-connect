@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:alumni_connect/constant/gloabalvariable.dart';
+import 'package:alumni_connect/screens/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,17 +11,16 @@ import '../helper/dialogs.dart';
 import '../main.dart';
 import '../models/chat_user.dart';
 import '../widgets/chat_user_card.dart';
-import 'profile_screen.dart';
 
 //home screen -- where all available contacts are shown
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MessageScreen extends StatefulWidget {
+  const MessageScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MessageScreen> createState() => _MessageScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MessageScreenState extends State<MessageScreen> {
   // for storing all users
   List<ChatUser> _list = [];
 
@@ -71,13 +72,15 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
         child: Scaffold(
+          backgroundColor: GlobalVariables.secondaryColor,
           //app bar
           appBar: AppBar(
-            leading: const Icon(CupertinoIcons.home),
+            backgroundColor: GlobalVariables.mainColor,
             title: _isSearching
                 ? TextField(
                     decoration: const InputDecoration(
-                        border: InputBorder.none, hintText: 'Name, Email, ...'),
+                        border: InputBorder.none,
+                        hintText: 'Enter Name or Email, ...'),
                     autofocus: true,
                     style: const TextStyle(fontSize: 17, letterSpacing: 0.5),
                     //when search text changes then updated search list
@@ -96,7 +99,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
                     },
                   )
-                : const Text('We Chat'),
+                : const Text('Messages',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w700)),
             actions: [
               //search user button
               IconButton(
@@ -105,19 +110,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       _isSearching = !_isSearching;
                     });
                   },
-                  icon: Icon(_isSearching
-                      ? CupertinoIcons.clear_circled_solid
-                      : Icons.search)),
+                  icon: Icon(
+                      _isSearching
+                          ? CupertinoIcons.clear_circled_solid
+                          : Icons.search,
+                      color: Colors.white)),
 
               //more features button
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => ProfileScreen(user: APIs.me)));
-                  },
-                  icon: const Icon(Icons.more_vert))
+              // IconButton(
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (_) => ProfileScreen(user: APIs.me)));
+              //     },
+              //     icon: const Icon(Icons.more_vert))
             ],
           ),
 
@@ -125,10 +132,14 @@ class _HomeScreenState extends State<HomeScreen> {
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: FloatingActionButton(
+                backgroundColor: GlobalVariables.mainColor,
                 onPressed: () {
                   _addChatUserDialog();
                 },
-                child: const Icon(Icons.add_comment_rounded)),
+                child: const Icon(
+                  Icons.add_comment_rounded,
+                  color: Colors.white,
+                )),
           ),
 
           //body
@@ -212,11 +223,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(20)),
 
               //title
-              title: Row(
-                children: const [
+              title: const Row(
+                children: [
                   Icon(
                     Icons.person_add,
-                    color: Colors.blue,
+                    color: GlobalVariables.mainColor,
                     size: 28,
                   ),
                   Text('  Add User')
@@ -229,7 +240,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onChanged: (value) => email = value,
                 decoration: InputDecoration(
                     hintText: 'Email Id',
-                    prefixIcon: const Icon(Icons.email, color: Colors.blue),
+                    prefixIcon: const Icon(Icons.email,
+                        color: GlobalVariables.mainColor),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15))),
               ),
@@ -243,7 +255,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.pop(context);
                     },
                     child: const Text('Cancel',
-                        style: TextStyle(color: Colors.blue, fontSize: 16))),
+                        style: TextStyle(
+                            color: GlobalVariables.mainColor, fontSize: 16))),
 
                 //add button
                 MaterialButton(
@@ -261,7 +274,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: const Text(
                       'Add',
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                      style: TextStyle(
+                          color: GlobalVariables.mainColor, fontSize: 16),
                     ))
               ],
             ));

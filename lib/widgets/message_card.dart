@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:alumni_connect/constant/gloabalvariable.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,7 +53,7 @@ class _MessageCardState extends State<MessageCard> {
                 horizontal: mq.width * .04, vertical: mq.height * .01),
             decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 221, 245, 255),
-                border: Border.all(color: Colors.lightBlue),
+                border: Border.all(color: GlobalVariables.mainColor),
                 //making borders curved
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30),
@@ -212,7 +213,7 @@ class _MessageCardState extends State<MessageCard> {
                         try {
                           log('Image Url: ${widget.message.msg}');
                           await GallerySaver.saveImage(widget.message.msg,
-                                  albumName: 'We Chat')
+                                  albumName: 'Alumni Connect')
                               .then((success) {
                             //for hiding bottom sheet
                             Navigator.pop(context);

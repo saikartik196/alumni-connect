@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:alumni_connect/constant/gloabalvariable.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/cupertino.dart';
@@ -54,11 +55,12 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Scaffold(
             //app bar
             appBar: AppBar(
+              backgroundColor: GlobalVariables.mainColor,
               automaticallyImplyLeading: false,
               flexibleSpace: _appBar(),
             ),
 
-            backgroundColor: const Color.fromARGB(255, 234, 248, 255),
+            backgroundColor: GlobalVariables.secondaryColor,
 
             //body
             body: Column(
@@ -156,8 +158,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   //back button
                   IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon:
-                          const Icon(Icons.arrow_back, color: Colors.black54)),
+                      icon: const Icon(Icons.arrow_back_ios,
+                          color: Colors.white)),
 
                   //user profile picture
                   ClipRRect(
@@ -184,8 +186,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       Text(list.isNotEmpty ? list[0].name : widget.user.name,
                           style: const TextStyle(
                               fontSize: 16,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w500)),
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600)),
 
                       //for adding some space
                       const SizedBox(height: 2),
@@ -202,7 +204,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                   context: context,
                                   lastActive: widget.user.lastActive),
                           style: const TextStyle(
-                              fontSize: 13, color: Colors.black54)),
+                              fontSize: 13, color: Colors.white)),
                     ],
                   )
                 ],
@@ -231,7 +233,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         setState(() => _showEmoji = !_showEmoji);
                       },
                       icon: const Icon(Icons.emoji_emotions,
-                          color: Colors.blueAccent, size: 25)),
+                          color: GlobalVariables.mainColor, size: 25)),
 
                   Expanded(
                       child: TextField(
@@ -243,7 +245,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                     decoration: const InputDecoration(
                         hintText: 'Type Something...',
-                        hintStyle: TextStyle(color: Colors.blueAccent),
+                        hintStyle: TextStyle(color: GlobalVariables.mainColor),
                         border: InputBorder.none),
                   )),
 
@@ -265,7 +267,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       icon: const Icon(Icons.image,
-                          color: Colors.blueAccent, size: 26)),
+                          color: GlobalVariables.mainColor, size: 26)),
 
                   //take image from camera button
                   IconButton(
@@ -285,7 +287,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       icon: const Icon(Icons.camera_alt_rounded,
-                          color: Colors.blueAccent, size: 26)),
+                          color: GlobalVariables.mainColor, size: 26)),
 
                   //adding some space
                   SizedBox(width: mq.width * .02),

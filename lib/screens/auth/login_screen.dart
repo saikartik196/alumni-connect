@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:alumni_connect/screens/bottom_navigator_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,7 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../api/apis.dart';
 import '../../helper/dialogs.dart';
 import '../../main.dart';
-import '../home_screen.dart';
+import '../message_screen.dart';
 
 //login screen -- implements google sign in or sign up feature for app
 class LoginScreen extends StatefulWidget {
@@ -46,11 +47,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if ((await APIs.userExists())) {
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+              context, MaterialPageRoute(builder: (_) => const BottomNav()));
         } else {
           await APIs.createUser().then((value) {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+                context, MaterialPageRoute(builder: (_) => const BottomNav()));
           });
         }
       }
@@ -97,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
       //app bar
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Welcome to We Chat'),
+        title: const Text('Welcome to Alumni Connect'),
       ),
 
       //body
@@ -108,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
             right: _isAnimate ? mq.width * .25 : -mq.width * .5,
             width: mq.width * .5,
             duration: const Duration(seconds: 1),
-            child: Image.asset('images/icon.png')),
+            child: Image.asset('images/logo.png')),
 
         //google login button
         Positioned(

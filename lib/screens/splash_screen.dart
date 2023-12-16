@@ -1,12 +1,14 @@
 import 'dart:developer';
 
+import 'package:alumni_connect/screens/bottom_navigator_bar.dart';
+import 'package:alumni_connect/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../main.dart';
 import '../api/apis.dart';
 import 'auth/login_screen.dart';
-import 'home_screen.dart';
+import 'message_screen.dart';
 
 //splash screen
 class SplashScreen extends StatefulWidget {
@@ -31,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         log('\nUser: ${APIs.auth.currentUser}');
         //navigate to home screen
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+            context, MaterialPageRoute(builder: (_) => const BottomNav()));
       } else {
         //navigate to login screen
         Navigator.pushReplacement(
@@ -50,19 +52,24 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(children: [
         //app logo
         Positioned(
-            top: mq.height * .15,
-            right: mq.width * .25,
-            width: mq.width * .5,
-            child: Image.asset('images/icon.png')),
+          top: mq.height * .15,
+          right: mq.width * .25,
+          width: mq.width * .5,
+          child: Image.asset(
+            'images/logo.png',
+            fit: BoxFit
+                .contain, // Use BoxFit.contain to fit within the specified width and height while maintaining aspect ratio
+          ),
+        ),
 
         //google login button
         Positioned(
             bottom: mq.height * .15,
             width: mq.width,
-            child: const Text('MADE IN INDIA WITH ❤️',
+            child: const Text('Let\s connect!!!! ❤️',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 16, color: Colors.black87, letterSpacing: .5))),
+                    fontSize: 18, color: Colors.black87, letterSpacing: .5))),
       ]),
     );
   }

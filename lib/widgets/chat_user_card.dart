@@ -1,3 +1,4 @@
+import 'package:alumni_connect/constant/gloabalvariable.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _ChatUserCardState extends State<ChatUserCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: GlobalVariables.cardColor,
       margin: EdgeInsets.symmetric(horizontal: mq.width * .04, vertical: 4),
       // color: Colors.blue.shade100,
       elevation: 0.5,
@@ -68,7 +70,9 @@ class _ChatUserCardState extends State<ChatUserCard> {
                 ),
 
                 //user name
-                title: Text(widget.user.name),
+                title: Text(widget.user.name,
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
 
                 //last message
                 subtitle: Text(
@@ -90,7 +94,7 @@ class _ChatUserCardState extends State<ChatUserCard> {
                             width: 15,
                             height: 15,
                             decoration: BoxDecoration(
-                                color: Colors.greenAccent.shade400,
+                                color: GlobalVariables.mainColor,
                                 borderRadius: BorderRadius.circular(10)),
                           )
                         :
